@@ -4,13 +4,30 @@ A clean Volumio 3 `music_service` plugin prototype that creates a **Time Machine
 
 This version deliberately avoids direct filesystem crawling and does not call `metaflac` across the music library. It queries MPD over `127.0.0.1:6600` and uses MPD-relative file paths for playback.
 
-## Default MPD paths
+## Example MPD paths
 
 ```text
 NAS/NAS/Flac,NAS/NAS/Vinyl
 ```
 
-These are MPD paths, not Linux `/mnt/...` paths.
+These are MPD paths, not Linux `/mnt/...` paths. They are examples from one
+development system; most users must replace them with paths from their own MPD
+database.
+
+To discover likely MPD path roots on Volumio:
+
+```bash
+mpc listall | awk -F/ 'NF>=4 {print $1"/"$2"/"$3; next} NF>=2 {print $1"/"$2}' | sort | uniq -c | sort -nr | head -30
+```
+
+Exclude obvious non-library paths such as `#recycle`, `@eaDir`, `.Trash`,
+backups, video folders, or temporary folders.
+
+To produce a copy-ready comma-separated value for the plugin setting:
+
+```bash
+mpc listall | awk -F/ 'NF>=4 {print $1"/"$2"/"$3; next} NF>=2 {print $1"/"$2}' | grep -Ev '(^|/)(#recycle|@eaDir|\.Trash|\.Trashes|\.TemporaryItems)(/|$)' | sort | uniq -c | awk '$1 >= 10 {$1=""; sub(/^ +/,""); print}' | paste -sd, -
+```
 
 ## Behaviour
 
