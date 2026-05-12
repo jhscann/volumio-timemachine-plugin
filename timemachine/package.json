@@ -1,0 +1,29 @@
+{
+  "name": "timemachine",
+  "version": "0.3.4",
+  "description": "Time Machine browse source for Volumio local/NAS libraries using MPD metadata",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tools/mpd-count.js"
+  },
+  "author": "Prototype generated with ChatGPT",
+  "license": "MIT",
+  "volumio_info": {
+    "prettyName": "Time Machine",
+    "icon": "icon-v032.png",
+    "plugin_type": "music_service",
+    "architectures": ["amd64", "armhf", "i386"],
+    "os": ["buster", "bookworm"],
+    "has_alsa_contribution": false,
+    "details": "Browse and play music by decade using MPD Date metadata.",
+    "changelog": "Fix random action cache/order behaviour and add bundled source icon."
+  },
+  "engines": {
+    "node": ">=8",
+    "volumio": ">=3"
+  },
+  "dependencies": {
+    "kew": "^0.7.0",
+    "v-conf": "^1.4.0"
+  }
+}
