@@ -1,4 +1,4 @@
-# Time Machine for Volumio, prototype v0.3.4
+# Time Machine for Volumio, prototype v0.3.5
 
 A clean Volumio 3 `music_service` plugin prototype that creates a **Time Machine** browse source and groups the MPD music database by release decade using MPD `Date` metadata.
 
@@ -124,5 +124,5 @@ journalctl -f -u volumio | grep -i "timemachine\|time machine\|mpd\|index\|cache
 - The Browse source now advertises `albumart: /albumart?sourceicon=music_service/timemachine/icon.png`.
 
 
-## v0.3.4 note
-Random playback now uses Volumio's local REST queue endpoints (`replaceAndPlay` then `addToQueue`) rather than directly manipulating MPD. This is intended to keep the visible Volumio queue, song metadata and album art in sync while preserving the fresh random order introduced in v0.3.3.
+## v0.3.5 note
+Random playback still uses Volumio's local REST queue endpoints (`replaceAndPlay` then `addToQueue`) rather than directly manipulating MPD. This version adds extra logging to make real-system validation of queue, metadata, and album-art behavior easier.

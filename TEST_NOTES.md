@@ -27,7 +27,7 @@ volumio vrestart
 cat /data/plugins/music_service/timemachine/package.json | grep -E '"name"|"version"|"prettyName"|"plugin_type"'
 ```
 
-Expected: `version` is `0.3.4`.
+Expected: `version` is `0.3.5`.
 
 4. Enable the plugin, open settings, and click **Save and rebuild MPD index**.
 

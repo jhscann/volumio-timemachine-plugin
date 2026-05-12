@@ -7,7 +7,7 @@ This repository was organised from `timemachine-0.3.4.zip`. The installable Volu
 Current plugin version:
 
 ```text
-0.3.4
+0.3.5
 ```
 
 The plugin is a Volumio 3 `music_service` source named **Time Machine**. It builds a manual cache from MPD metadata and exposes decade-based browse and random playback actions.
@@ -32,6 +32,8 @@ It also used `metaflac` for FLAC metadata. That failed on the full library: the 
 `v0.3.3` fixed fresh randomness by directly manipulating the MPD queue. That produced different random orders, but Volumio's visible queue, current song metadata, and album art did not update correctly.
 
 `v0.3.4` attempts to preserve fresh randomness while routing random playback through Volumio's queue/state layer with local REST calls to `replaceAndPlay` and `addToQueue`.
+
+`v0.3.5` keeps the `v0.3.4` behavior and adds diagnostic logging around random seeds, selected MPD paths, queue item shape, and local Volumio queue API results. It also moves the project into a public GitHub repository with validation and packaging scripts.
 
 ## Known Good Behavior
 

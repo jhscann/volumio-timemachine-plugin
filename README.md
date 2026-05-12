@@ -9,8 +9,12 @@ The plugin is intentionally MPD-index based. It does not recursively crawl `/mnt
 ```text
 volumio-timemachine-plugin/
   README.md
+  CHANGELOG.md
   HANDOVER.md
   TEST_NOTES.md
+  scripts/
+    package-plugin.sh
+    validate.sh
   timemachine/
     index.js
     package.json
@@ -135,7 +139,35 @@ cat /data/plugins/music_service/timemachine/package.json | grep -E '"name"|"vers
 Expected current version:
 
 ```text
-"version": "0.3.4"
+"version": "0.3.5"
+```
+
+## Development Workflow
+
+Use this GitHub repository as the source of truth:
+
+```text
+https://github.com/jhscann/volumio-timemachine-plugin
+```
+
+Make changes in a clean local clone, run validation, then package or deploy the `timemachine/` folder.
+
+Validate local files:
+
+```bash
+scripts/validate.sh
+```
+
+Build an install archive:
+
+```bash
+scripts/package-plugin.sh
+```
+
+The package script writes a versioned archive under `dist/`, for example:
+
+```text
+dist/timemachine-0.3.5.zip
 ```
 
 ## Troubleshooting
