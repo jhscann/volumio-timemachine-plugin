@@ -1,0 +1,61 @@
+{
+  "page": {
+    "label": "Time Machine Configuration"
+  },
+  "sections": [
+    {
+      "id": "settings",
+      "element": "section",
+      "label": "MPD index settings",
+      "icon": "fa-clock-o",
+      "onSave": {
+        "type": "controller",
+        "endpoint": "music_service/timemachine",
+        "method": "saveSettings"
+      },
+      "saveButton": {
+        "label": "Save and rebuild MPD index",
+        "data": [
+          "mpdPaths",
+          "maxRandomTracks",
+          "randomAlbumsCount",
+          "includeMissingYear"
+        ]
+      },
+      "content": [
+        {
+          "id": "mpdPaths",
+          "element": "input",
+          "label": "MPD library paths",
+          "description": "Comma-separated MPD paths to query. Use MPD-relative paths, not Linux /mnt paths. For your current setup: NAS/NAS/Flac,NAS/NAS/Vinyl",
+          "doc": "",
+          "value": "NAS/NAS/Flac,NAS/NAS/Vinyl"
+        },
+        {
+          "id": "maxRandomTracks",
+          "element": "input",
+          "label": "Maximum random tracks",
+          "description": "Maximum number of shuffled tracks to queue when using Play Random Tracks.",
+          "doc": "",
+          "value": "50"
+        },
+        {
+          "id": "randomAlbumsCount",
+          "element": "input",
+          "label": "Random albums count",
+          "description": "Number of complete albums to queue when using Play Random Albums.",
+          "doc": "",
+          "value": "3"
+        },
+        {
+          "id": "includeMissingYear",
+          "element": "input",
+          "label": "Include missing year in random playback",
+          "description": "Use true or false. When true, random playback can include tracks where MPD has no usable Date field.",
+          "doc": "",
+          "value": "false"
+        }
+      ]
+    }
+  ]
+}
