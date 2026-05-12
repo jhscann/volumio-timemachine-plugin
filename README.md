@@ -42,11 +42,14 @@ volumio plugin install
 - MPD reachable on `127.0.0.1:6600`
 - Node version compatible with Volumio 3 plugin runtime
 
-Default MPD library paths:
+Example MPD library paths:
 
 ```text
 NAS/NAS/Flac,NAS/NAS/Vinyl
 ```
+
+These defaults match one development system only. Most users must replace them
+with paths from their own MPD database.
 
 These are MPD-relative playable paths, not Linux filesystem paths. Playback items must use raw MPD paths such as:
 
@@ -102,6 +105,31 @@ Settings live in the Volumio plugin configuration UI:
 - `includeMissingYear`: whether random playback may include `Missing Year` content. Default: `false`.
 
 Saving settings triggers a manual MPD index rebuild. There is no automatic scan on plugin startup.
+
+### Discover MPD Paths
+
+Before saving settings, SSH into the Volumio box and list likely MPD path
+roots:
+
+```bash
+mpc listall | awk -F/ 'NF>=4 {print $1"/"$2"/"$3; next} NF>=2 {print $1"/"$2}' | sort | uniq -c | sort -nr | head -30
+```
+
+Review the output and exclude obvious non-library paths such as `#recycle`,
+`@eaDir`, `.Trash`, backups, video folders, or temporary folders.
+
+To produce a copy-ready comma-separated value for the `mpdPaths` setting,
+excluding common junk folders and tiny one-off roots:
+
+```bash
+mpc listall | awk -F/ 'NF>=4 {print $1"/"$2"/"$3; next} NF>=2 {print $1"/"$2}' | grep -Ev '(^|/)(#recycle|@eaDir|\.Trash|\.Trashes|\.TemporaryItems)(/|$)' | sort | uniq -c | awk '$1 >= 10 {$1=""; sub(/^ +/,""); print}' | paste -sd, -
+```
+
+Example output:
+
+```text
+NAS/NAS/Flac,NAS/NAS/Lossy,NAS/NAS/Vinyl,NAS/NAS/DVD Audio
+```
 
 ## Index Rebuild
 
