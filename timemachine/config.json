@@ -1,0 +1,18 @@
+{
+  "mpdPaths": {
+    "type": "string",
+    "value": "NAS/NAS/Flac,NAS/NAS/Vinyl"
+  },
+  "maxRandomTracks": {
+    "type": "number",
+    "value": 50
+  },
+  "randomAlbumsCount": {
+    "type": "number",
+    "value": 3
+  },
+  "includeMissingYear": {
+    "type": "boolean",
+    "value": false
+  }
+}
