@@ -28,7 +28,6 @@ The installable plugin is in `timemachine/`.
 - `timemachine/config.json`: default settings.
 - `scripts/validate.sh`: local syntax and JSON validation.
 - `scripts/package-plugin.sh`: versioned release zip builder.
-- `docs/time-machine-memory.md`: durable project memory mirror.
 
 ## Release Checklist
 
@@ -56,4 +55,4 @@ The Google Doc memory is the cross-Codex source of truth:
 
 https://docs.google.com/document/d/1MbE-zUsmwvpfZ9Zp5z2Y_y4Z982LJVMrC18i1Zm3ahc
 
-Mirror durable updates into `docs/time-machine-memory.md` when practical.
+Mirror durable updates into the local memory file when practical.
