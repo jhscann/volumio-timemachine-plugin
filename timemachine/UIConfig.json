@@ -27,7 +27,7 @@
           "id": "mpdPaths",
           "element": "input",
           "label": "MPD library paths",
-          "description": "Comma-separated MPD paths to query. Use MPD-relative paths, not Linux /mnt paths. For your current setup: NAS/NAS/Flac,NAS/NAS/Vinyl",
+          "description": "Comma-separated MPD-relative library paths to index, for example NAS/NAS/Flac,NAS/NAS/Vinyl. Discover these with mpc listall on the Volumio box.",
           "doc": "",
           "value": "NAS/NAS/Flac,NAS/NAS/Vinyl"
         },
