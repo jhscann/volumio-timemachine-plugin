@@ -1,7 +1,7 @@
 {
   "name": "timemachine",
-  "version": "0.3.5",
-  "description": "Time Machine browse source for Volumio local/NAS libraries using MPD metadata",
+  "version": "0.4.0",
+  "description": "Time Machine browse source for Volumio 4 local/NAS libraries using MPD metadata",
   "main": "index.js",
   "scripts": {
     "test": "node tools/mpd-count.js"
@@ -12,15 +12,15 @@
     "prettyName": "Time Machine",
     "icon": "icon-v032.png",
     "plugin_type": "music_service",
-    "architectures": ["amd64", "armhf", "i386"],
-    "os": ["buster", "bookworm"],
+    "architectures": ["amd64", "armhf"],
+    "os": ["bookworm"],
     "has_alsa_contribution": false,
-    "details": "Browse and play music by decade using MPD Date metadata.",
-    "changelog": "Add diagnostic logging for random queue playback and formalize GitHub project workflow."
+    "details": "Browse and play local/NAS music by decade using MPD Date metadata.",
+    "changelog": "Port package metadata and documentation for Volumio 4 Bookworm."
   },
   "engines": {
-    "node": ">=8",
-    "volumio": ">=3"
+    "node": ">=20",
+    "volumio": ">=4"
   },
   "dependencies": {
     "kew": "^0.7.0",
