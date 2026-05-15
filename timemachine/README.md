@@ -28,11 +28,14 @@ mpc listall | awk -F/ 'NF>=4 {print $1"/"$2"/"$3; next} NF>=2 {print $1"/"$2}' |
 
 Then save settings and run **Save and rebuild MPD index**.
 
-## Install
+## Install From GitHub
 
-From this folder on the Volumio box:
+SSH into your Volumio 4 box, then run:
 
 ```bash
+cd /home/volumio
+git clone https://github.com/jhscann/volumio-timemachine-plugin.git
+cd volumio-timemachine-plugin/timemachine
 npm install
 volumio plugin install
 volumio vrestart
